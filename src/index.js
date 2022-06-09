@@ -10,11 +10,22 @@ const TodoList = () => {
   );
 };
 
-const el = (
-  <div>
-    <h1>My ToDo List</h1>
-		<input placeholder="search" />
-		
-  </div>
-);
-ReactDOM.render(el, document.getElementById("root"));
+const AppHeader = () => {
+  return <h1>My ToDo List</h1>;
+};
+
+const SearchPanel = () => {
+  return <input placeholder="search" />;
+};
+
+const App = () => {
+	return (
+    <div>
+      <AppHeader />
+      <SearchPanel />
+      <TodoList />
+    </div>
+  );
+}
+
+ReactDOM.render(<App/>, document.getElementById("root"));
