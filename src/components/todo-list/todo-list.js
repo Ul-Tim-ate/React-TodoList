@@ -5,7 +5,7 @@ import "./todo-list.css";
 
 class TodoList extends React.Component {
   render() {
-    const { todos, onDeleted } = this.props;
+    const { todos, onDeleted, onToggleDone, onToggleImportant } = this.props;
     const elements = todos.map((item) => {
       const { id, ...itemProps } = item;
 
@@ -15,6 +15,12 @@ class TodoList extends React.Component {
             {...itemProps}
             onDeleted={() => {
               onDeleted(id);
+            }}
+            onToggleDone={() => {
+              onToggleDone(id);
+            }}
+            onToggleImportant={() => {
+              onToggleImportant(id);
             }}
           />
         </li>
