@@ -34,7 +34,8 @@ export class App extends React.Component {
       };
     });
   };
-  addItem = (newElement) => {
+	addItem = (newElement) => {
+		
     this.setState(({ todoData }) => {
       const newArray = [...todoData, this.createTodoItem(newElement)];
       return {
