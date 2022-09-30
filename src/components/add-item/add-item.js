@@ -17,7 +17,8 @@ export class AddItem extends React.Component {
     this.setState({
       label: "",
     });
-  };
+	};
+	
   render() {
     return (
       <form className="item-add-form d-flex" onSubmit={this.onSubmit}>
