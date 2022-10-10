@@ -7,6 +7,7 @@ import AddItem from "../add-item";
 import "./app.css";
 import { useState } from "react";
 import { ITodoListItem } from "../todo-list-item/todo-list-item";
+import { Status } from "../item-status-filter/item-status-filter";
 
 export const App = () => {
   let maxId = 100;
@@ -18,7 +19,7 @@ export const App = () => {
       id: maxId++,
     };
   };
-  const [status, setStatus] = useState<string>("all");
+  const [status, setStatus] = useState<Status>(Status.all);
   const [todoData, setTodoData] = useState<ITodoListItem[]>([
     createTodoItem("Drink Coffee"),
     createTodoItem("Make Awesome App"),
@@ -58,19 +59,19 @@ export const App = () => {
       return toggleProperty(todoData, id, "done");
     });
   };
-  const changeStatus = (status: string) => {
+  const changeStatus = (status: Status) => {
     setStatus(() => {
       return status;
     });
   };
   const getDataByStatus = (todoData: ITodoListItem[]) :ITodoListItem[]  =>  {
-    if (status === "all") {
+    if (status === Status.all) {
       return todoData;
     }
-    if (status === "active") {
+    if (status === Status.active) {
       return todoData.filter((el) => !el.done);
     }
-    if (status === "done") {
+    if (status === Status.done) {
       return todoData.filter((el) => el.done);
 		}
 		return todoData;

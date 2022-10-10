@@ -1,18 +1,23 @@
 import React, { FC } from "react";
 import "./item-status-filter.css";
 
-interface ItemStatusFilterProps{
-	changeStatus: (status: string)=>void;
-	status: string;
+export enum Status{
+	all = "all",
+	active = "active",
+	done = "done"
 }
 
+interface ItemStatusFilterProps{
+	changeStatus: (status: Status)=>void;
+	status: Status;
+}
 
 
 const ItemStatusFilter:FC<ItemStatusFilterProps> = ({ changeStatus, status }) => {
   const buttons = [
-    { name: "all", label: "All" },
-    { name: "active", label: "Active" },
-    { name: "done", label: "Done" },
+    { name: Status.all, label: "All" },
+    { name: Status.active, label: "Active" },
+    { name: Status.done, label: "Done" },
   ];
 
   const buttonsList = buttons.map(({ name, label }) => {
