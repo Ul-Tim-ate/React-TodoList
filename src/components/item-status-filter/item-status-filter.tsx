@@ -1,7 +1,14 @@
-import React from "react";
+import React, { FC } from "react";
 import "./item-status-filter.css";
 
-const ItemStatusFilter = ({ changeStatus, status }) => {
+interface ItemStatusFilterProps{
+	changeStatus: (status: string)=>void;
+	status: string;
+}
+
+
+
+const ItemStatusFilter:FC<ItemStatusFilterProps> = ({ changeStatus, status }) => {
   const buttons = [
     { name: "all", label: "All" },
     { name: "active", label: "Active" },

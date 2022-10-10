@@ -1,13 +1,17 @@
-import React from "react";
+import React, { ChangeEvent, FC, FormEvent } from "react";
 import { useState } from "react";
 import "./add-item.css";
 
-export const AddItem = ({ onClick }) => {
+interface AddItemProps{
+	onClick: (label: string) => void;
+}
+
+export const AddItem: FC<AddItemProps> = ({ onClick }) => {
   const [label, setLabel] = useState("");
-  const labelChange = (e) => {
+  const labelChange = (e: ChangeEvent<HTMLInputElement>) => {
     setLabel(e.target.value);
   };
-  const onSubmit = (e) => {
+  const onSubmit = (e: FormEvent) => {
     e.preventDefault();
     onClick(label);
     setLabel("");

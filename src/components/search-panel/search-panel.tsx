@@ -1,9 +1,12 @@
-import React from "react";
-
+import React, { ChangeEvent, FC } from "react";
 import "./search-panel.css";
 
-const SearchPanel = ({ setSearchTerm }) => {
-  const onChange = (e) => {
+interface SearchPanelProps{
+	setSearchTerm: (term: string) => void;
+}
+
+const SearchPanel: FC<SearchPanelProps> = ({ setSearchTerm }) => {
+  const onChange = (e: ChangeEvent<HTMLInputElement>) => {
     setSearchTerm(e.target.value);
   };
   return (

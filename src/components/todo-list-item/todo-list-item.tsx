@@ -1,8 +1,24 @@
-import React from "react";
+import React, { FC } from "react";
 
 import "./todo-list-item.css";
 
-const TodoListItem = ({ label, onDeleted, onToggleImportant, onToggleDone, important, done }) => {
+interface TodoListItemProps{
+	label: string;
+	important: boolean;
+	done: boolean;
+	onDeleted: () => void;
+	onToggleImportant: () => void;
+	onToggleDone: () => void;
+}
+
+export interface TodoListItemAtributes{
+	label: string;
+	important: boolean;
+	done: boolean;
+	id: number;
+}
+
+const TodoListItem : FC<TodoListItemProps> = ({ label, onDeleted, onToggleImportant, onToggleDone, important, done }) => {
   let className = "todo-list-item";
   if (important) {
     className += " important";
