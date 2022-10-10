@@ -10,7 +10,7 @@ import { ITodoListItem } from "../todo-list-item/todo-list-item";
 
 export const App = () => {
   let maxId = 100;
-  const createTodoItem = (label: string) => {
+  const createTodoItem = (label: string): ITodoListItem => {
     return {
       label,
       important: false,
@@ -18,13 +18,13 @@ export const App = () => {
       id: maxId++,
     };
   };
-  const [status, setStatus] = useState("all");
-  const [todoData, setTodoData] = useState([
+  const [status, setStatus] = useState<string>("all");
+  const [todoData, setTodoData] = useState<ITodoListItem[]>([
     createTodoItem("Drink Coffee"),
     createTodoItem("Make Awesome App"),
     createTodoItem("Have a lunch"),
   ]);
-  const [term, setTerm] = useState("");
+  const [term, setTerm] = useState<string>("");
   const deleteItem = (id: number) => {
     setTodoData(() => {
       const idx = todoData.findIndex((el) => el.id === id);

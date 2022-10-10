@@ -7,7 +7,7 @@ interface AddItemProps{
 }
 
 export const AddItem: FC<AddItemProps> = ({ onClick }) => {
-  const [label, setLabel] = useState("");
+  const [label, setLabel] = useState<string>("");
   const labelChange = (e: ChangeEvent<HTMLInputElement>) => {
     setLabel(e.target.value);
   };
