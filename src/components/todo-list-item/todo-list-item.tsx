@@ -11,7 +11,7 @@ interface TodoListItemProps{
 	onToggleDone: () => void;
 }
 
-export interface TodoListItemAtributes{
+export interface ITodoListItem{
 	label: string;
 	important: boolean;
 	done: boolean;

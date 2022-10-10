@@ -6,7 +6,7 @@ import ItemStatusFilter from "../item-status-filter";
 import AddItem from "../add-item";
 import "./app.css";
 import { useState } from "react";
-import { TodoListItemAtributes } from "../todo-list-item/todo-list-item";
+import { ITodoListItem } from "../todo-list-item/todo-list-item";
 
 export const App = () => {
   let maxId = 100;
@@ -38,9 +38,9 @@ export const App = () => {
       return newArray;
     });
   };
-  const toggleProperty = (arr: TodoListItemAtributes[], id: number, propName: keyof TodoListItemAtributes) => {
-    const idx = arr.findIndex((el: TodoListItemAtributes) => el.id === id);
-    const oldItem: TodoListItemAtributes = arr[idx];
+  const toggleProperty = (arr: ITodoListItem[], id: number, propName: keyof ITodoListItem) => {
+    const idx = arr.findIndex((el: ITodoListItem) => el.id === id);
+    const oldItem: ITodoListItem = arr[idx];
     const newItem = {
       ...oldItem,
       [propName]: !oldItem[propName],
@@ -63,7 +63,7 @@ export const App = () => {
       return status;
     });
   };
-  const getDataByStatus = (todoData: TodoListItemAtributes[]) :TodoListItemAtributes[]  =>  {
+  const getDataByStatus = (todoData: ITodoListItem[]) :ITodoListItem[]  =>  {
     if (status === "all") {
       return todoData;
     }
@@ -75,7 +75,7 @@ export const App = () => {
 		}
 		return todoData;
   };
-  const searchTodo = () :TodoListItemAtributes[] => {
+  const searchTodo = () :ITodoListItem[] => {
     if (term === "") {
       return todoData;
     }
@@ -86,7 +86,7 @@ export const App = () => {
   const setSearchTerm = (currentTerm: string) => {
     setTerm(currentTerm);
   };
-  const visibleData :TodoListItemAtributes[]  = getDataByStatus(searchTodo());
+  const visibleData :ITodoListItem[]  = getDataByStatus(searchTodo());
   const doneCount = todoData.filter((el) => el.done).length;
   const toDoCount = todoData.length - doneCount;
   return (

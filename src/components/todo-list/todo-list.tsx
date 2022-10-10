@@ -1,9 +1,9 @@
 import React, { FC } from "react";
-import TodoListItem, { TodoListItemAtributes } from "../todo-list-item/todo-list-item";
+import TodoListItem, { ITodoListItem } from "../todo-list-item/todo-list-item";
 import "./todo-list.css";
 
 interface TodoListProps{
-	todos: TodoListItemAtributes[];
+	todos: ITodoListItem[];
 	onDeleted: (id: number) => void;
 	onToggleDone: (id: number) => void;
 	onToggleImportant: (id: number) => void;
@@ -11,7 +11,7 @@ interface TodoListProps{
 
 
 const TodoList: FC<TodoListProps>= ({ todos, onDeleted, onToggleDone, onToggleImportant }) => {
-  const elements = todos.map((item: TodoListItemAtributes) => {
+  const elements = todos.map((item: ITodoListItem) => {
     const { id, ...itemProps } = item;
     return (
       <li key={id} className="list-group-item">
